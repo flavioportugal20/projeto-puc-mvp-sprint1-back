@@ -17,7 +17,7 @@ CORS(app)
 # definindo tags
 home_tag = Tag(name="Documentação", description="Seleção de documentação: Swagger, Redoc ou RapiDoc")
 visitante_tag = Tag(name="Visitante", description="Adição, visualização e remoção de visitantes à base")
-acesso_tag = Tag(name="Acesso", description="Adição de um acesso à um visitantes cadastrado na base")
+acesso_tag = Tag(name="Acesso", description="Adição e visualização de um acesso à um visitante cadastrado na base")
 
 
 @app.get('/', tags=[home_tag])
@@ -313,7 +313,7 @@ def count_acesso():
         return {"message": "Erro ao retornar a quantidade de acessos cadastrados", "count": count}
 
 
-@app.get('/acesso/lista/count/obs', tags=[visitante_tag],
+@app.get('/acesso/lista/count/obs', tags=[acesso_tag],
             responses={"200": CountAcessoViewSchema, "404": ErrorSchema})
 def count_acesso_obs():
     """Retorna a quantidade de acessos com observações
